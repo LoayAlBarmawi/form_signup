@@ -29,7 +29,7 @@ class _FormBuilderRegFormState extends State<FormBuilderRegForm> {
         border: OutlineInputBorder(),
       ),
       name: "Email",
-      onSaved: (v) {
+      onChanged: (v) {
         _email = v!;
       },
       validator:
@@ -41,7 +41,10 @@ class _FormBuilderRegFormState extends State<FormBuilderRegForm> {
       ),
       name: "fname",
       onSaved: (v) {
-        _fname = v!;
+        if (v == null) {
+          _fname = "";
+        } else
+          _fname = v;
       },
       validator: validateName,
     );
@@ -51,7 +54,10 @@ class _FormBuilderRegFormState extends State<FormBuilderRegForm> {
       ),
       name: "lname",
       onSaved: (v) {
-        _lname = v!;
+        if (v == null) {
+          _fname = "";
+        } else
+          _fname = v;
       },
       validator: validateName,
     );
@@ -73,19 +79,23 @@ class _FormBuilderRegFormState extends State<FormBuilderRegForm> {
       onChanged: (value) => _password = value!,
     );
     final repeatpasswordField = FormBuilderTextField(
-      name: "ConfirmPassword",
-      obscureText: true,
-      validator: (v) {
-        if (v == _password)
-          return null;
-        else
-          return "Passwords do not match";
-      },
-      decoration: InputDecoration(
-        border: OutlineInputBorder(),
-      ),
-      onSaved: (value) => _confirmPassword = value!,
-    );
+        name: "ConfirmPassword",
+        obscureText: true,
+        validator: (v) {
+          if (v == _password)
+            return null;
+          else
+            return "Passwords do not match";
+        },
+        decoration: InputDecoration(
+          border: OutlineInputBorder(),
+        ),
+        onSaved: (v) {
+          if (v == null) {
+            _confirmPassword = "";
+          } else
+            _confirmPassword = v;
+        });
     final dateField = FormBuilderDateTimePicker(
         name: "Date of Birth",
         initialEntryMode: DatePickerEntryMode.input,

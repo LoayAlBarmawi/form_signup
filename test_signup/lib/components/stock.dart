@@ -27,6 +27,10 @@ class _StockRegFormState extends State<StockRegForm> {
     final emailField = TextFormField(
       validator: validateEmail,
       decoration: InputDecoration(
+        errorStyle: TextStyle(
+          color: Colors.white,
+          fontStyle: FontStyle.italic,
+        ),
         border: OutlineInputBorder(),
       ),
       onSaved: (value) => _email = value!,
@@ -123,10 +127,6 @@ class _StockRegFormState extends State<StockRegForm> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  SizedBox(height: 10.0),
-                  Text("Email"),
-                  SizedBox(height: 5.0),
-                  emailField,
                   SizedBox(height: 15.0),
                   Text("First Name"),
                   SizedBox(height: 10.0),
@@ -162,6 +162,10 @@ class _StockRegFormState extends State<StockRegForm> {
                   Text("Gender"),
                   SizedBox(height: 10.0),
                   gender,
+                  SizedBox(height: 10.0),
+                  Text("Email"),
+                  SizedBox(height: 5.0),
+                  emailField,
                   SizedBox(height: 20.0),
                   SizedBox(height: 5.0),
                   TextButton(
